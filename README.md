@@ -28,7 +28,7 @@ Official setup reference: https://vercel.com/docs/frameworks/frontend/vite
 
 ## What it does
 
-The four-step questionnaire asks for an interest track, subject familiarity, Coursera project experience and domain, optional completed courses, cohort or college year, learning goal, weekly hours, and preferred completion window. Results show a relevance rating, explanation, course level, learning hours, estimated weeks, project-entry count, capstone indicator, skills, source PDF page, certificate information, and the original Coursera link.
+The four-step questionnaire asks for an interest track, subject familiarity, Coursera project experience and domain, optional completed courses, cohort or college year, learning goal, weekly hours, and preferred completion window. Results show a relevance rating, explanation, course level, learning hours, estimated weeks, final-project indicator, skills, certificate information, and the original Coursera link.
 
 Scholars can edit their answers, browse and filter the whole catalog, save a shortlist, and download their recommendation table as CSV. The shortlist stays in local browser storage; questionnaire answers stay only in memory. Fonts are bundled locally. Fonts, logos, and photography are served locally. External websites open only when a scholar follows an external link.
 

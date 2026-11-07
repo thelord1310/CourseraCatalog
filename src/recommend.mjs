@@ -26,10 +26,10 @@ export function recommend(courses, a) {
     if (a.goal === 'explore') {
       components.goal = (level === 0 ? 10 : 3) + (c.hours <= 40 ? 6 : 1) + (!c.capstone ? 4 : 1);
       if (level === 0) reasons.push('Helps you explore the field before moving into deeper study.');
-      if (!c.capstone) reasons.push('No final project is marked in the PDF, so it may offer a gentler start.');
+      if (!c.capstone) reasons.push('A final project is not specified; check the assessment details on Coursera.');
     } else if (a.goal === 'portfolio') {
       components.goal = c.capstone ? 20 : /project|build|hands-on|practical/i.test(c.description) ? 12 : 5;
-      if(c.capstone) reasons.push('The PDF marks a final project: a concrete opportunity to build portfolio work.');
+      if(c.capstone) reasons.push('Includes a final project: a concrete opportunity to build portfolio work.');
     } else if (a.goal === 'skills') {
       components.goal = level === target ? 18 : 12;
       reasons.push('Builds subject-specific skills you can practise alongside college.');
@@ -58,6 +58,6 @@ export function recommend(courses, a) {
   }).sort((a,b)=>Number(a.needsPreparation)-Number(b.needsPreparation) || Number(a.overTime)-Number(b.overTime) || b.score-a.score || a.sequence-b.sequence);
 }
 export function recommendationsCsv(items) {
-  const rows=[['Course','Provider','Track','Level','Fit score (rule-based)','Hours','Estimated weeks at your pace','PDF duration','Project entries in PDF','Final project marked','Why it fits','Considerations','Coursera URL','Source PDF page'],...items.map(c=>[c.title,c.provider,c.track,c.level,c.score,c.hours,c.weeks,c.catalogDuration,c.projectCount,c.capstone?'Yes':'No',c.reasons.join(' '),c.cautions.join(' '),c.url,c.sourcePage])];
+  const rows=[['Course','Provider','Track','Level','Relevance score','Hours','Estimated weeks at your pace','Suggested duration','Final project','Why it fits','Considerations','Coursera URL'],...items.map(c=>[c.title,c.provider,c.track,c.level,c.score,c.hours,c.weeks,c.catalogDuration,c.capstone?'Included':'Not specified',c.reasons.join(' '),c.cautions.join(' '),c.url])];
   return '\uFEFF'+rows.map(row=>row.map(value=>'"'+String(value ?? '').replaceAll('"','""')+'"').join(',')).join('\r\n');
 }

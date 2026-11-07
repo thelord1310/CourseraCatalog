@@ -25,7 +25,7 @@ Source: DAS C2 Recommended_Project (1).pdf, supplied by the user. This document 
 | Consulting | 7 | 5 | 357 |
 | Total | 71 | 42 | 4536.5 |
 
-The final project summary counts one project entry per listed course. We preserve that as `projectCount: 1` and show the interpretation alongside the number. This does not establish the number of graded assignments, guided projects, or subcourses inside a Coursera certificate. A capstone flag is separate. A course without a marked capstone may still contain practical exercises or projects.
+The final project summary counts one project entry per listed course. We preserve that as internal `projectCount: 1` metadata. Student views and downloads do not display this entry count or source-document references; they show final-project information instead. This does not establish the number of graded assignments, guided projects, or subcourses inside a Coursera certificate. A capstone flag is separate. A course without a marked capstone may still contain practical exercises or projects.
 
 ## Conflicts preserved transparently
 

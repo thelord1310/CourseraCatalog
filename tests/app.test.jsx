@@ -20,9 +20,9 @@ function finishBeginner(){selectFinance();click(/new to this/);click(/No, not ye
 
 test('questionnaire validates missing answers and recommends a foundation course for a C3 beginner',()=>{
  render(<App/>);continueStep();assert.match(screen.getByRole('alert').textContent,/Choose a field/);
- finishBeginner();const rows=screen.getAllByRole('row');assert.match(rows[1].textContent,/Introduction to Financial Accounting/);assert.match(rows[1].textContent,/16 hours/);assert.match(rows[1].textContent,/No final project marked/);assert.match(rows[1].textContent,/1 project entry in PDF/);
+ finishBeginner();const rows=screen.getAllByRole('row');assert.match(rows[1].textContent,/Introduction to Financial Accounting/);assert.match(rows[1].textContent,/16 hours/);assert.match(rows[1].textContent,/Final project not specified/);assert.doesNotMatch(rows[1].textContent,/pdf|project entr(?:y|ies)/i);
  assert.ok(screen.getByText('Cohort 3 · Second year'));
- click(/View details for Introduction to Financial Accounting/);const dlg=screen.getByRole('dialog');assert.match(dlg.textContent,/Why this course appears/);assert.match(dlg.textContent,/page 17/);assert.equal(within(dlg).getByRole('link',{name:/Open on Coursera/}).getAttribute('href'),'https://www.coursera.org/learn/wharton-accounting');click(/Close dialog/);
+ click(/View details for Introduction to Financial Accounting/);const dlg=screen.getByRole('dialog');assert.match(dlg.textContent,/Why this course appears/);assert.doesNotMatch(dlg.textContent,/pdf|project entr(?:y|ies)|source page/i);assert.ok(within(dlg).getByText('Certificate'));assert.equal(within(dlg).getByRole('link',{name:/Open on Coursera/}).getAttribute('href'),'https://www.coursera.org/learn/wharton-accounting');click(/Close dialog/);
 });
 test('previous Coursera project requires a domain and changes third-year recommendations',()=>{
  render(<App/>);selectFinance();click(/confident with the foundations/);click(/Yes, I’ve completed a Coursera project/);continueStep();assert.match(screen.getByRole('alert').textContent,/project domain/);
